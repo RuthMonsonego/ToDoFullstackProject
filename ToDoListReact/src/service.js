@@ -1,24 +1,11 @@
 import axios from 'axios';
 
-// הגדרת כתובת ה-API מתוך משתנה הסביבה
-axios.defaults.baseURL=process.env.REACT_APP_API_BASE_URL;
-
-console.log(axios.defaults.baseURL);
-console.log(process.env.REACT_APP_API_BASE_URL);
-
-// הוספת interceptor לטיפול בשגיאות
-axios.interceptors.response.use(
-  response => response,
-  error => {
-    console.error('API Error:', error.response || error.message || error);
-    return Promise.reject(error);
-  }
-);
+const apiUrl = process.env.REACT_APP_API_BASE_URL;
 
 export default {
   getTasks: async () => {
     try {
-      const result = await axios.get('/items');
+      const result = await axios.get(`${apiUrl}/items`);
       return result.data;
     } catch (error) {
       console.error('Failed to fetch tasks:', error);
@@ -27,7 +14,7 @@ export default {
   },
   addTask: async (name) => {
     try {
-      const result = await axios.post('/items', { name });
+      const result = await axios.post(`${apiUrl}/items`, { name });
       return result.data;
     } catch (error) {
       console.error('Failed to add task:', error);
@@ -36,7 +23,7 @@ export default {
   },
   setCompleted: async (id, isComplete) => {
     try {
-      const result = await axios.put(`/items/${id}`, { isComplete });
+      const result = await axios.put(`${apiUrl}/items/${id}`, { isComplete });
       return result.data;
     } catch (error) {
       console.error('Failed to update task:', error);
@@ -45,7 +32,7 @@ export default {
   },
   deleteTask: async (id) => {
     try {
-      const result = await axios.delete(`/items/${id}`);
+      const result = await axios.delete(`${apiUrl}/items/${id}`);
       return result.data;
     } catch (error) {
       console.error('Failed to delete task:', error);
