@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const apiUrl = process.env.REACT_APP_API_BASE_URL;
+// const apiUrl = process.env.REACT_APP_API_BASE_URL;
+const apiUrl = "https://todolistserver-798b.onrender.com";
 
 export default {
   getTasks: async () => {
