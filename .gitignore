@@ -1,0 +1,9 @@
+ToDoListReact/.env
+ToDoListReact/node_modules
+
+TodoApi/.vs
+TodoApi/bin/
+TodoApi/obj/
+TodoApi/build/
+
+
